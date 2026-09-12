@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A graphic designer portfolio preview." />
+    <title>Graphic Portfolio</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="cursor-position" aria-hidden="true">
+      <div class="cursor-center">
+        <span class="cursor-shape"></span>
+      </div>
+    </div>
+
+    <header class="site-header reveal-ui">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span>A/01</span>
+        <span>Visual Designer</span>
+      </a>
+
+      <div class="header-actions">
+        <a class="contact-button" href="mailto:hello@example.com">
+          <span>Start a project</span>
+          <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 18 12">
+            <path d="M1 6h15M11 1l5 5-5 5" />
+          </svg>
+        </a>
+
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-panel">
+          <span class="sr-only">Open menu</span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title" class="hero-title" aria-label="Graphic Design Portfolio">
+            <span class="title-line title-line--graphic"><span>Graphic</span></span>
+            <span class="title-roller" aria-hidden="true">
+              <span class="roller-word roller-word--portfolio">Portfolio</span>
+              <span class="roller-word roller-word--design">Design</span>
+            </span>
+          </h1>
+
+          <div class="statement reveal-copy">
+            <p>I believe that design is about discovering new value and communicating it to people.</p>
+          </div>
+
+          <div class="hero-actions reveal-copy">
+            <a class="primary-action" href="mailto:hello@example.com">
+              <span class="button-content button-content--dark">
+                <span>Start a project</span>
+                <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 18 12">
+                  <path d="M1 6h15M11 1l5 5-5 5" />
+                </svg>
+              </span>
+              <span class="button-content button-content--light" aria-hidden="true">
+                <span>Start a project</span>
+                <svg class="arrow-icon" viewBox="0 0 18 12">
+                  <path d="M1 6h15M11 1l5 5-5 5" />
+                </svg>
+              </span>
+            </a>
+            <a class="secondary-action" href="#selected-work">
+              <span>All projects</span>
+              <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 18 12">
+                <path d="M1 6h15M11 1l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="poster-zone reveal-posters" aria-label="Selected project covers">
+          <div class="poster-stage">
+            <button class="poster-card poster-card--front" data-project="soultube" style="--x: 1%; --y: 44%; --ex: -10px; --ey: 4px; --follow-x-max: 24; --follow-y-max: 16; --z: 7; --i: 6">
+              <img src="./assets/work-soultube.png" alt="Soultube music application project" />
+            </button>
+            <button class="poster-card poster-card--two" data-project="harmony" style="--x: 8%; --y: 36.7%; --ex: -7px; --ey: 3px; --follow-x-max: 32; --follow-y-max: 24; --z: 6; --i: 5">
+              <img src="./assets/work-harmony.png" alt="False Harmony installation project" />
+            </button>
+            <button class="poster-card poster-card--three" data-project="safe" style="--x: 15%; --y: 29.3%; --ex: -4px; --ey: 2px; --follow-x-max: 40; --follow-y-max: 30; --z: 5; --i: 4">
+              <img src="./assets/work-safe.png" alt="Safe editorial project" />
+            </button>
+            <button class="poster-card poster-card--four" data-project="designjob" style="--x: 22%; --y: 22%; --ex: 0px; --ey: 0px; --follow-x-max: 48; --follow-y-max: 36; --z: 4; --i: 3">
+              <img src="./assets/work-design-job.png" alt="Design Job exhibition project" />
+            </button>
+            <button class="poster-card poster-card--five" data-project="cloudcoffee" style="--x: 29%; --y: 14.7%; --ex: 4px; --ey: -2px; --follow-x-max: 56; --follow-y-max: 42; --z: 3; --i: 2">
+              <img src="./assets/work-cloud-coffee.png" alt="Cloud Coffee brand project" />
+            </button>
+            <button class="poster-card poster-card--six" data-project="yiguo" style="--x: 36%; --y: 7.3%; --ex: 7px; --ey: -3px; --follow-x-max: 64; --follow-y-max: 48; --z: 2; --i: 1">
+              <img src="./assets/work-yiguo.png" alt="Yi Grow Art Center project" />
+            </button>
+            <button class="poster-card poster-card--seven" data-project="untitled" style="--x: 43%; --y: 0%; --ex: 10px; --ey: -4px; --follow-x-max: 72; --follow-y-max: 54; --z: 1; --i: 0">
+              <img src="./assets/work-untitled.png" alt="Untitled visual design project" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="self-pr" aria-labelledby="self-pr-title">
+        <div class="pr-sticky">
+          <div class="pr-content">
+            <h2 id="self-pr-title" class="pr-title" aria-label="Dong XueJie, Personal Statement">
+              <span class="pr-title-visual" aria-hidden="true">
+                <span class="pr-line" data-pr-text="Dong XueJie"></span>
+                <span class="pr-line" data-pr-text="Personal Statement"></span>
+              </span>
+            </h2>
+
+            <div class="pr-body">
+              <p>My strength is my ability to proactively explore new fields while drawing on the visual communication skills I have developed through graphic design.</p>
+              <p>I have worked on poster design, branding, and typographic expression using Photoshop, Illustrator, and InDesign. Throughout the process, I have focused on creating designs that communicate information clearly, always considering the purpose behind each visual choice.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="selected-work" class="work-strip" aria-label="Portfolio categories">
+        <p>Identity</p>
+        <p>Editorial</p>
+        <p>Campaign</p>
+        <p>Digital</p>
+      </section>
+    </main>
+
+    <aside id="menu-panel" class="menu-panel" aria-hidden="true">
+      <nav aria-label="Primary navigation">
+        <a href="#top">Index <span>01</span></a>
+        <a href="#selected-work">Work <span>02</span></a>
+        <a href="mailto:hello@example.com">Contact <span>03</span></a>
+      </nav>
+      <p>Available for selected collaborations.</p>
+    </aside>
+
+    <dialog class="project-dialog">
+      <button class="dialog-close" type="button" aria-label="Close project">×</button>
+      <div class="dialog-layout">
+        <div class="dialog-art"><img src="" alt="" /></div>
+        <div class="dialog-copy">
+          <p class="dialog-number"></p>
+          <h2></h2>
+          <p class="dialog-category"></p>
+          <p class="dialog-description"></p>
+          <dl>
+            <div><dt>Role</dt><dd>Art direction / Design</dd></div>
+            <div><dt>Year</dt><dd>2026</dd></div>
+          </dl>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
