@@ -143,6 +143,71 @@
   pointer-events: none;
 }
 
+.character-profile {
+  padding-top: 22svh;
+}
+
+.character-profile__heading {
+  margin-bottom: 11svh;
+  align-items: end;
+}
+
+.character-profile__heading h2 {
+  max-width: 760px;
+}
+
+.character-primary-view {
+  margin-inline: auto;
+}
+
+.character-secondary-views {
+  margin-top: 11svh;
+}
+
+.character-secondary-views--single {
+  width: var(--mr-wu-pair-width);
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.character-materials {
+  padding-top: 18svh;
+  overflow: hidden;
+}
+
+.character-materials__title {
+  width: var(--mr-wu-content-width);
+  margin: 0 auto 7svh;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(28px, 2.6vw, 50px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.material-marquee__item--labeled {
+  height: clamp(456px, 61svh, 654px);
+  flex-direction: column;
+  gap: 14px;
+}
+
+.material-marquee__item--labeled img {
+  height: calc(100% - 28px);
+  min-height: 0;
+}
+
+.material-marquee__item figcaption {
+  width: 100%;
+  flex: none;
+  color: #252525;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
 @keyframes material-marquee-scroll {
   to {
     transform: translate3d(var(--material-marquee-shift, -50%), 0, 0);
@@ -231,12 +296,50 @@
     padding: 116px 0 72px;
   }
 
+  .character-profile {
+    padding-top: 132px;
+  }
+
+  .character-profile__heading {
+    margin-bottom: 64px;
+  }
+
+  .character-profile__heading h2 {
+    font-size: clamp(46px, 13vw, 68px);
+  }
+
+  .character-secondary-views {
+    margin-top: 20px;
+  }
+
+  .character-secondary-views--single {
+    width: var(--mr-wu-pair-width);
+  }
+
+  .character-materials {
+    padding-top: 112px;
+  }
+
+  .character-materials__title {
+    margin-bottom: 42px;
+    font-size: clamp(26px, 8vw, 36px);
+  }
+
   .material-marquee__track {
     --material-marquee-gap: 18px;
   }
 
   .material-marquee__item {
     height: min(50svh, 430px);
+  }
+
+  .material-marquee__item--labeled {
+    height: min(53svh, 458px);
+    gap: 12px;
+  }
+
+  .material-marquee__item--labeled img {
+    height: calc(100% - 26px);
   }
 
   .mr-wu-ending {
