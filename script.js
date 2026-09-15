@@ -72,7 +72,8 @@ const projects = {
     title: 'The Digital of Dan Role',
     category: 'Visual design / Experimental',
     description: 'An experimental visual project developed through composition, image making and a tightly controlled graphic system.',
-    image: './assets/work-digital-dan-role.png'
+    image: './assets/work-digital-dan-role.png',
+    url: './mr-wu/'
   }
 };
 
