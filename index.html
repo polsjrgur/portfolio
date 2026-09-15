@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A graphic designer portfolio preview." />
-    <title>Graphic Portfolio</title>
+    <meta name="description" content="Dong XueJie's graphic design portfolio, professional profile, education and selected achievements." />
+    <title>Dong XueJie — Graphic Designer Portfolio</title>
+    <script>document.documentElement.classList.add('site-intro-pending');</script>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./site-logo.css" />
+    <link rel="stylesheet" href="./site-intro.css" />
   </head>
   <body>
     <div class="cursor-position" aria-hidden="true">
@@ -14,20 +17,45 @@
       </div>
     </div>
 
-    <header class="site-header reveal-ui">
+    <header class="site-header">
       <a class="brand" href="#top" aria-label="Back to top">
-        <span>A/01</span>
-        <span>Visual Designer</span>
+        <span class="brand-motion">
+          <svg class="site-logo" viewBox="0 0 488.57 145.82" aria-hidden="true" focusable="false">
+            <defs>
+              <clipPath id="logo-first-tail-clip"><rect x="47" y="-4" width="446" height="88" /></clipPath>
+              <clipPath id="logo-second-tail-clip"><rect x="199" y="65" width="294" height="85" /></clipPath>
+            </defs>
+            <use class="logo-d" href="./assets/site-logo.svg#logo-d" />
+            <g class="logo-tail" clip-path="url(#logo-first-tail-clip)">
+              <use href="./assets/site-logo.svg#logo-first-o" />
+              <use href="./assets/site-logo.svg#logo-first-n" />
+              <use href="./assets/site-logo.svg#logo-first-g" />
+              <use href="./assets/site-logo.svg#logo-first-x" />
+              <use href="./assets/site-logo.svg#logo-first-u" />
+              <use href="./assets/site-logo.svg#logo-first-e-one" />
+              <use href="./assets/site-logo.svg#logo-first-j" />
+              <use href="./assets/site-logo.svg#logo-first-j-dot" />
+              <use href="./assets/site-logo.svg#logo-first-i" />
+              <use href="./assets/site-logo.svg#logo-first-i-dot" />
+              <use href="./assets/site-logo.svg#logo-first-e-two" />
+            </g>
+            <use class="logo-rule" href="./assets/site-logo.svg#logo-rule" />
+            <use class="logo-p" href="./assets/site-logo.svg#logo-p" />
+            <g class="logo-tail" clip-path="url(#logo-second-tail-clip)">
+              <use href="./assets/site-logo.svg#logo-second-o-one" />
+              <use href="./assets/site-logo.svg#logo-second-r" />
+              <use href="./assets/site-logo.svg#logo-second-t" />
+              <use href="./assets/site-logo.svg#logo-second-f" />
+              <use href="./assets/site-logo.svg#logo-second-o-two" />
+              <use href="./assets/site-logo.svg#logo-second-l" />
+              <use href="./assets/site-logo.svg#logo-second-i" />
+              <use href="./assets/site-logo.svg#logo-second-o-three" />
+            </g>
+          </svg>
+        </span>
       </a>
 
-      <div class="header-actions">
-        <a class="contact-button" href="mailto:hello@example.com">
-          <span>Start a project</span>
-          <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 18 12">
-            <path d="M1 6h15M11 1l5 5-5 5" />
-          </svg>
-        </a>
-
+      <div class="header-actions reveal-ui">
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-panel">
           <span class="sr-only">Open menu</span>
           <span></span>
@@ -37,7 +65,18 @@
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
+      <section id="selected-work" class="hero" aria-labelledby="hero-title">
+        <div class="hero-contact-slot">
+          <div class="hero-contact-entry reveal-ui">
+            <a class="contact-button hero-contact-button" href="#career-profile">
+              <span>Start a project</span>
+              <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 18 12">
+                <path d="M1 6h15M11 1l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
         <div class="hero-copy">
           <h1 id="hero-title" class="hero-title" aria-label="Graphic Design Portfolio">
             <span class="title-line title-line--graphic"><span>Graphic</span></span>
@@ -52,7 +91,7 @@
           </div>
 
           <div class="hero-actions reveal-copy">
-            <a class="primary-action" href="mailto:hello@example.com">
+            <a class="primary-action" href="#career-profile">
               <span class="button-content button-content--dark">
                 <span>Start a project</span>
                 <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 18 12">
@@ -95,8 +134,8 @@
             <button class="poster-card poster-card--six" data-project="yiguo" style="--x: 36%; --y: 7.3%; --ex: 7px; --ey: -3px; --follow-x-max: 64; --follow-y-max: 48; --z: 2; --i: 1">
               <img src="./assets/work-yiguo.png" alt="Yi Grow Art Center project" />
             </button>
-            <button class="poster-card poster-card--seven" data-project="untitled" style="--x: 43%; --y: 0%; --ex: 10px; --ey: -4px; --follow-x-max: 72; --follow-y-max: 54; --z: 1; --i: 0">
-              <img src="./assets/work-untitled.png" alt="Untitled visual design project" />
+            <button class="poster-card poster-card--seven" data-project="untitled" aria-label="The Digital of Dan Role project" style="--x: 43%; --y: 0%; --ex: 10px; --ey: -4px; --follow-x-max: 72; --follow-y-max: 54; --z: 1; --i: 0">
+              <img src="./assets/work-digital-dan-role.png" alt="The Digital of Dan Role project poster" />
             </button>
           </div>
         </div>
@@ -120,11 +159,170 @@
         </div>
       </section>
 
-      <section id="selected-work" class="work-strip" aria-label="Portfolio categories">
-        <p>Identity</p>
-        <p>Editorial</p>
-        <p>Campaign</p>
-        <p>Digital</p>
+      <section class="transition-scene" aria-label="Career statement and profile transition">
+        <span id="career-profile" class="career-anchor" aria-hidden="true"></span>
+
+        <div class="transition-sticky">
+          <section class="career-profile-screen profile-panel profile-introduction" data-profile-panel="introduction" aria-labelledby="career-title">
+            <div class="profile-panel-inner">
+              <div class="profile-panel-grid profile-introduction-grid">
+                <h2 id="career-title" class="profile-panel-title profile-reveal"><span>Professional</span><span>Profile</span></h2>
+                <div class="profile-introduction-copy">
+                  <div class="profile-identity profile-reveal">
+                    <strong>Dong XueJie</strong>
+                    <span>Graphic Designer</span>
+                  </div>
+                  <p class="profile-summary profile-reveal">I am seeking a graphic design position where I can contribute my visual communication skills, explore new ideas, and continue growing through collaborative practice.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="manifesto-fallback">
+            <p class="manifesto-copy">
+              <span>Ready to learn,</span>
+              <span>contribute,</span>
+              <span>and grow through</span>
+              <span>design.</span>
+            </p>
+          </div>
+
+          <div class="transition-slices" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="profile-panel profile-skills" data-profile-panel="skills" aria-labelledby="skills-title">
+        <div class="profile-panel-inner">
+          <div class="profile-panel-grid">
+            <h2 id="skills-title" class="profile-panel-title profile-reveal"><span>What I</span><span>can do.</span></h2>
+            <div class="capability-list">
+              <article class="capability-row" tabindex="0">
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="capability-number profile-reveal">01</p>
+                <div class="capability-copy profile-reveal">
+                  <h3>Visual Communication &amp; Advertising</h3>
+                  <p>Creating clear and engaging visual communication for posters, campaigns, and advertising.</p>
+                  <p class="capability-keywords">Visual Communication / Poster Design / Advertising Design / Campaign Visuals</p>
+                </div>
+              </article>
+              <article class="capability-row" tabindex="0">
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="capability-number profile-reveal">02</p>
+                <div class="capability-copy profile-reveal">
+                  <h3>Brand Identity &amp; Packaging</h3>
+                  <p>Developing visual identities and packaging systems that communicate a consistent brand character.</p>
+                  <p class="capability-keywords">Brand Identity / Brand Packaging Design / Logo Design / Visual Systems</p>
+                </div>
+              </article>
+              <article class="capability-row" tabindex="0">
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="capability-number profile-reveal">03</p>
+                <div class="capability-copy profile-reveal">
+                  <h3>Editorial Design &amp; Typography</h3>
+                  <p>Organizing text and imagery through typography, publication design, and clear visual hierarchy.</p>
+                  <p class="capability-keywords">Editorial Design / Typography / Publication Design / Layout Design</p>
+                </div>
+              </article>
+              <article class="capability-row" tabindex="0">
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="capability-number profile-reveal">04</p>
+                <div class="capability-copy profile-reveal">
+                  <h3>Web &amp; Digital Design</h3>
+                  <p>Creating responsive web layouts and digital experiences with attention to hierarchy, usability, and communication.</p>
+                  <p class="capability-keywords">Web Design / Digital Design / Interface Layout / Responsive Design</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-panel profile-software" data-profile-panel="software" aria-labelledby="software-title">
+        <div class="profile-panel-inner">
+          <div class="profile-panel-grid">
+            <h2 id="software-title" class="profile-panel-title profile-reveal"><span>Tools I</span><span>work with.</span></h2>
+            <div class="software-list">
+              <div class="software-row" data-rating="5">
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="software-name profile-reveal">Adobe Illustrator</p>
+                <span class="software-rating" aria-label="5 out of 5"><i class="is-filled"></i><i class="is-filled"></i><i class="is-filled"></i><i class="is-filled"></i><i class="is-filled"></i></span>
+              </div>
+              <div class="software-row" data-rating="4">
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="software-name profile-reveal">Adobe Photoshop</p>
+                <span class="software-rating" aria-label="4 out of 5"><i class="is-filled"></i><i class="is-filled"></i><i class="is-filled"></i><i class="is-filled"></i><i></i></span>
+              </div>
+              <div class="software-row" data-rating="4">
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="software-name profile-reveal">Adobe InDesign</p>
+                <span class="software-rating" aria-label="4 out of 5"><i class="is-filled"></i><i class="is-filled"></i><i class="is-filled"></i><i class="is-filled"></i><i></i></span>
+              </div>
+              <div class="software-row" data-rating="2">
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="software-name profile-reveal">Figma</p>
+                <span class="software-rating" aria-label="2 out of 5"><i class="is-filled"></i><i class="is-filled"></i><i></i><i></i><i></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-panel profile-education" data-profile-panel="education" aria-labelledby="education-title">
+        <div class="profile-panel-inner">
+          <div class="profile-panel-grid">
+            <h2 id="education-title" class="profile-panel-title profile-reveal"><span>Learning</span><span>Journey.</span></h2>
+            <ol class="education-timeline">
+              <li><time datetime="2017">2017</time><p>Graduated from Sanya University</p></li>
+              <li><time datetime="2023-04">Apr 2023</time><p>Moved to Japan</p></li>
+              <li><time datetime="2025-04">Apr 2025</time><p>Entered Tokyo Designer Academy</p></li>
+              <li><time datetime="2027-03">Expected Mar 2027</time><p>Graduation from Tokyo Designer Academy</p></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-panel profile-awards" data-profile-panel="awards" aria-labelledby="awards-title">
+        <div class="profile-panel-inner">
+          <div class="profile-panel-grid">
+            <h2 id="awards-title" class="profile-panel-title profile-reveal"><span>Awards</span></h2>
+            <div class="awards-content">
+              <p class="award-brand profile-reveal">JAGDA</p>
+              <div class="award-list">
+                <article class="award-item" tabindex="0">
+                  <span class="profile-rule" aria-hidden="true"></span>
+                  <p class="award-status">Selected</p>
+                  <p class="award-name"><time datetime="2025">2025</time><span>JAGDA International Student Poster Award</span></p>
+                </article>
+                <article class="award-item" tabindex="0">
+                  <span class="profile-rule" aria-hidden="true"></span>
+                  <p class="award-status">Selected</p>
+                  <p class="award-name"><time datetime="2026">2026</time><span>JAGDA International Student Poster Award</span></p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-panel profile-contact" data-profile-panel="contact" aria-labelledby="contact-title">
+        <div class="profile-panel-inner">
+          <div class="profile-panel-grid">
+            <h2 id="contact-title" class="profile-panel-title profile-reveal"><span>Beyond</span><span>Design.</span></h2>
+            <div class="contact-profile-copy">
+              <div class="interest-list" aria-label="Interests">
+                <p class="profile-reveal">Hiking</p>
+                <p class="profile-reveal">Photography</p>
+                <p class="profile-reveal">Visiting exhibitions</p>
+              </div>
+              <p class="availability profile-reveal">Open to graphic design opportunities.</p>
+            </div>
+          </div>
+          <footer class="profile-footer profile-reveal">
+            <span>Dong XueJie</span>
+            <span>Graphic Designer</span>
+            <span>© 2026</span>
+          </footer>
+        </div>
       </section>
     </main>
 
@@ -132,9 +330,9 @@
       <nav aria-label="Primary navigation">
         <a href="#top">Index <span>01</span></a>
         <a href="#selected-work">Work <span>02</span></a>
-        <a href="mailto:hello@example.com">Contact <span>03</span></a>
+        <a href="#career-profile">Contact <span>03</span></a>
       </nav>
-      <p>Available for selected collaborations.</p>
+      <p>Open to graphic design opportunities.</p>
     </aside>
 
     <dialog class="project-dialog">
@@ -146,6 +344,12 @@
           <h2></h2>
           <p class="dialog-category"></p>
           <p class="dialog-description"></p>
+          <a class="dialog-project-link" href="#" hidden>
+            <span>View case study</span>
+            <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 18 12">
+              <path d="M1 6h15M11 1l5 5-5 5" />
+            </svg>
+          </a>
           <dl>
             <div><dt>Role</dt><dd>Art direction / Design</dd></div>
             <div><dt>Year</dt><dd>2026</dd></div>
@@ -154,6 +358,9 @@
       </div>
     </dialog>
 
+    <script src="./cursor-morph.js"></script>
     <script src="./script.js"></script>
+    <script src="./site-logo.js"></script>
+    <script src="./site-intro.js"></script>
   </body>
 </html>

@@ -1,0 +1,197 @@
+.harmony-hero h1 span {
+  display: block;
+}
+
+.harmony-hero {
+  min-height: 108svh;
+  padding-bottom: 12svh;
+}
+
+.harmony-hero .project-hero__introduction {
+  padding-top: 0;
+}
+
+.harmony-mockup {
+  margin-top: 2svh;
+}
+
+.harmony-concept {
+  padding-top: 19svh;
+}
+
+.harmony-concept__heading {
+  align-items: start;
+  margin-bottom: 10svh;
+}
+
+.harmony-concept__copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.harmony-concept__copy p {
+  max-width: 620px;
+  margin: 0;
+  color: #3f3f3f;
+  font-size: clamp(16px, 1.15vw, 21px);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.harmony-concept__copy .harmony-concept__lead {
+  margin-bottom: clamp(34px, 4.5svh, 64px);
+  color: var(--ink);
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(27px, 2.25vw, 43px);
+  font-weight: 500;
+  line-height: 1.14;
+}
+
+.harmony-diptych {
+  width: var(--detail-width);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.15vw, 24px);
+  align-items: end;
+}
+
+.harmony-award {
+  padding-top: 22svh;
+}
+
+.harmony-award__layout {
+  width: var(--detail-width);
+  min-height: 60svh;
+  margin-inline: auto;
+  padding-block: 4svh 10svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6vw;
+  align-items: end;
+  border-top: 1px solid var(--ink);
+}
+
+.harmony-award__status {
+  margin: 0 0 3svh;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(44px, 5vw, 96px);
+  font-weight: 500;
+  line-height: 0.9;
+}
+
+.harmony-award h2 {
+  max-width: 700px;
+  margin: 0;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(24px, 2.2vw, 44px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.harmony-award__year {
+  margin: 0;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(64px, 7.2vw, 138px);
+  font-weight: 500;
+  line-height: 0.74;
+  letter-spacing: 0;
+}
+
+.harmony-ending h2 {
+  max-width: 1080px;
+  font-size: clamp(56px, 5.6vw, 106px);
+}
+
+@media (max-width: 1050px) {
+  .harmony-hero {
+    min-height: 0;
+  }
+
+  .harmony-award__layout {
+    grid-template-columns: 1fr;
+    align-content: end;
+  }
+
+  .harmony-award__year {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 850px) {
+  .harmony-hero {
+    padding-bottom: 110px;
+  }
+
+  .harmony-concept__copy {
+    margin-top: 44px;
+  }
+
+  .harmony-concept__heading {
+    margin-bottom: 64px;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header .menu-button {
+    margin-left: auto;
+  }
+
+  .harmony-hero {
+    padding-bottom: 88px;
+  }
+
+  .harmony-hero h1 {
+    font-size: clamp(66px, 20vw, 96px);
+  }
+
+  .harmony-concept {
+    padding-top: 112px;
+  }
+
+  .harmony-concept__copy {
+    grid-column: auto;
+    grid-row: auto;
+    margin-top: 34px;
+  }
+
+  .harmony-concept__copy .harmony-concept__lead {
+    font-size: clamp(25px, 7.8vw, 34px);
+  }
+
+  .harmony-diptych {
+    display: block;
+  }
+
+  .harmony-diptych .project-media + .project-media {
+    margin-top: 20px;
+  }
+
+  .harmony-award {
+    padding-top: 128px;
+  }
+
+  .harmony-award__layout {
+    min-height: 62svh;
+    padding-block: 28px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 48px;
+  }
+
+  .harmony-award__status {
+    margin-bottom: 24px;
+    font-size: clamp(44px, 13vw, 64px);
+  }
+
+  .harmony-award h2 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .harmony-award__year {
+    font-size: clamp(68px, 22vw, 96px);
+  }
+}

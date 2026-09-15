@@ -1,0 +1,80 @@
+.js .reveal-text,
+.js .reveal-body {
+  --detail-reveal-offset: 50px;
+  opacity: 0;
+  filter: blur(7px);
+  transform: translate3d(0, var(--detail-reveal-offset), 0);
+  transition:
+    opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1) var(--detail-reveal-delay, 0s),
+    transform 1.05s cubic-bezier(0.16, 1, 0.3, 1) var(--detail-reveal-delay, 0s),
+    filter 1.05s cubic-bezier(0.16, 1, 0.3, 1) var(--detail-reveal-delay, 0s);
+  will-change: opacity, transform, filter;
+}
+
+.js .reveal-text.reveal-from-up,
+.js .reveal-body.reveal-from-up {
+  --detail-reveal-offset: -50px;
+}
+
+.js .reveal-text.reveal-from-down,
+.js .reveal-body.reveal-from-down {
+  --detail-reveal-offset: 50px;
+}
+
+.js .reveal-text.is-visible,
+.js .reveal-body.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0);
+}
+
+.js .media-reveal {
+  overflow: hidden;
+}
+
+.js .media-reveal img {
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(10px);
+  transform: scale(0.985);
+  transition:
+    opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--media-reveal-delay, 0s),
+    filter 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--media-reveal-delay, 0s),
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) var(--media-reveal-delay, 0s),
+    visibility 0s linear calc(var(--media-reveal-delay, 0s) + 1.4s);
+  will-change: opacity, filter, transform;
+}
+
+.js .media-reveal.is-visible img {
+  opacity: 1;
+  visibility: visible;
+  filter: blur(0);
+  transform: scale(1);
+  transition-delay:
+    var(--media-reveal-delay, 0s),
+    var(--media-reveal-delay, 0s),
+    var(--media-reveal-delay, 0s),
+    0s;
+}
+
+.js .media-reveal.is-resetting img {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal-text,
+  .js .reveal-body {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+
+  .js .media-reveal img {
+    opacity: 1;
+    visibility: visible;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}

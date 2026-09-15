@@ -1,0 +1,150 @@
+.brand-motion {
+  --logo-focus-x: 0px;
+  --logo-focus-y: 0px;
+  --logo-focus-scale: 1;
+  --logo-follow-x: 0px;
+  --logo-follow-y: 0px;
+}
+
+@property --logo-focus-x {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --logo-focus-y {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --logo-focus-scale {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+.brand {
+  display: block;
+  position: relative;
+  z-index: 0;
+  width: fit-content;
+  padding: 8px;
+  margin: -8px;
+  line-height: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-motion {
+  width: 176px;
+  display: block;
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(
+    calc(var(--logo-focus-x) + var(--logo-follow-x)),
+    calc(var(--logo-focus-y) + var(--logo-follow-y)),
+    0
+  ) scale(var(--logo-focus-scale));
+  transform-origin: center;
+  transition:
+    --logo-focus-x 0.52s cubic-bezier(0.16, 1.28, 0.3, 1),
+    --logo-focus-y 0.52s cubic-bezier(0.16, 1.28, 0.3, 1),
+    --logo-focus-scale 0.52s cubic-bezier(0.16, 1.2, 0.3, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brand:hover,
+  .brand:focus-visible {
+    z-index: 1001;
+    outline: none;
+  }
+
+  .brand:hover .brand-motion,
+  .brand:focus-visible .brand-motion {
+    --logo-focus-x: -9px;
+    --logo-focus-y: -6px;
+    --logo-focus-scale: 1.08;
+  }
+}
+
+.site-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  filter: none;
+  transition: filter 0.25s ease;
+}
+
+.site-logo .logo-tail {
+  opacity: var(--logo-tail-opacity, 1);
+  filter: blur(var(--logo-tail-blur, 0px));
+  transform: translate3d(var(--logo-tail-shift, 0px), 0, 0);
+  transform-box: view-box;
+  transform-origin: left center;
+  will-change: transform, opacity, filter;
+}
+
+.site-logo .logo-rule {
+  transform: scaleX(var(--logo-line-scale, 1));
+  transform-box: fill-box;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.site-logo .logo-p {
+  transform: translate3d(var(--logo-p-shift, 0px), 0, 0);
+  transform-box: view-box;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.cursor-center {
+  width: 78px;
+  height: 78px;
+}
+
+.cursor-shape {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+  background: rgb(245 27 43 / var(--cursor-fill-alpha, 1));
+  border: var(--cursor-border-width, 0px) solid #f51b2b;
+  border-radius: var(--cursor-radius, 50%);
+  transform: scale(var(--cursor-scale, 0.128205)) rotate(var(--cursor-rotation, 0deg));
+  transform-origin: center;
+  pointer-events: none;
+  will-change: transform, border-radius, background-color, border-width;
+}
+
+body.menu-open .site-logo,
+body.nav-on-red:not(.menu-open) .site-logo {
+  filter: invert(1);
+}
+
+@media (max-width: 760px) {
+  .brand {
+    position: fixed;
+    top: 22px;
+    left: 20px;
+  }
+
+  .brand-motion { width: 140px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-motion {
+    --logo-focus-x: 0px;
+    --logo-focus-y: 0px;
+    --logo-focus-scale: 1;
+    --logo-follow-x: 0px;
+    --logo-follow-y: 0px;
+    transition: none;
+  }
+
+  .site-logo .logo-tail { filter: none; }
+}

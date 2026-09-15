@@ -1,0 +1,175 @@
+.safe-hero {
+  min-height: 104svh;
+  padding-bottom: 12svh;
+}
+
+.safe-hero h1 {
+  font-size: clamp(92px, 10.5vw, 202px);
+  line-height: 0.86;
+}
+
+.safe-hero .project-hero__introduction {
+  padding-top: 0;
+}
+
+.safe-mockup {
+  margin-top: 2svh;
+}
+
+.safe-concept {
+  padding-top: 19svh;
+}
+
+.safe-concept__heading {
+  align-items: start;
+  margin-bottom: 11svh;
+}
+
+.safe-concept__heading h2 {
+  max-width: 760px;
+  font-size: clamp(58px, 6vw, 116px);
+  line-height: 0.95;
+}
+
+.safe-concept__heading > p:last-child {
+  align-self: start;
+}
+
+.safe-poster {
+  width: min(38vw, 660px);
+  margin-inline: auto;
+}
+
+.safe-award {
+  padding-top: 22svh;
+}
+
+.safe-award__layout {
+  width: var(--detail-width);
+  min-height: 60svh;
+  margin-inline: auto;
+  padding-block: 4svh 10svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6vw;
+  align-items: end;
+  border-top: 1px solid var(--ink);
+}
+
+.safe-award__status {
+  margin: 0 0 3svh;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(44px, 5vw, 96px);
+  font-weight: 500;
+  line-height: 0.9;
+}
+
+.safe-award h2 {
+  max-width: 700px;
+  margin: 0;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(24px, 2.2vw, 44px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.safe-award__year {
+  margin: 0;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(64px, 7.2vw, 138px);
+  font-weight: 500;
+  line-height: 0.74;
+  letter-spacing: 0;
+}
+
+.safe-ending {
+  padding-top: 24svh;
+}
+
+.safe-ending h2 {
+  max-width: 1080px;
+  font-size: clamp(56px, 5.6vw, 106px);
+}
+
+@media (max-width: 1050px) {
+  .safe-hero {
+    min-height: 0;
+  }
+
+  .safe-poster {
+    width: min(50vw, 680px);
+  }
+
+  .safe-award__layout {
+    grid-template-columns: 1fr;
+    align-content: end;
+  }
+
+  .safe-award__year {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 850px) {
+  .safe-hero {
+    padding-bottom: 110px;
+  }
+
+  .safe-concept__heading {
+    margin-bottom: 68px;
+  }
+}
+
+@media (max-width: 760px) {
+  .safe-hero {
+    padding-bottom: 88px;
+  }
+
+  .safe-hero h1 {
+    font-size: clamp(72px, 22vw, 112px);
+  }
+
+  .safe-concept {
+    padding-top: 112px;
+  }
+
+  .safe-concept__heading h2 {
+    font-size: clamp(48px, 14vw, 72px);
+  }
+
+  .safe-poster {
+    width: min(78vw, 520px);
+  }
+
+  .safe-award {
+    padding-top: 128px;
+  }
+
+  .safe-award__layout {
+    min-height: 62svh;
+    padding-block: 28px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 48px;
+  }
+
+  .safe-award__status {
+    margin-bottom: 24px;
+    font-size: clamp(44px, 13vw, 64px);
+  }
+
+  .safe-award h2 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .safe-award__year {
+    font-size: clamp(68px, 22vw, 96px);
+  }
+
+  .safe-ending {
+    padding-top: 132px;
+  }
+}
