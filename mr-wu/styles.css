@@ -118,6 +118,10 @@
   animation-play-state: paused;
 }
 
+.character-profile--wu-jing .material-marquee:focus .material-marquee__track {
+  animation-play-state: paused;
+}
+
 .material-marquee__group {
   flex: none;
   display: flex;
