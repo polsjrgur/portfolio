@@ -58,7 +58,8 @@ const projects = {
     title: 'Cloud Coffee',
     category: 'Brand identity / Campaign',
     description: 'A tactile coffee identity combining local landscape, expressive typography and surreal product imagery.',
-    image: './assets/work-cloud-coffee.png'
+    image: './assets/work-cloud-coffee.png',
+    url: './cloud-coffee/'
   },
   yiguo: {
     number: 'Project 06 / 07',
