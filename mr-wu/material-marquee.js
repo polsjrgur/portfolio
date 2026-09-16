@@ -136,6 +136,29 @@
       state.animation.currentTime = ((time % duration) + duration) % duration;
     }
 
+    function scrollBy(deltaX) {
+      if (reducedMotion.matches) {
+        marquee.scrollLeft += deltaX;
+        return;
+      }
+
+      const distance = state.originalGroup.getBoundingClientRect().width;
+      const animation = track.getAnimations()[0];
+      const duration = animation?.effect?.getComputedTiming().duration;
+      if (!distance || !Number.isFinite(duration) || !duration) return;
+
+      const time = (animation.currentTime ?? 0) + deltaX * duration / distance;
+      animation.currentTime = ((time % duration) + duration) % duration;
+    }
+
+    addListener(marquee, 'wheel', (event) => {
+      if (!state.isHovered || state.isDragging || Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+
+      event.preventDefault();
+      const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? marquee.clientWidth : 1;
+      scrollBy(event.deltaX * unit);
+    }, { passive: false });
+
     function finishDrag(event, cancelled = false) {
       if (event.pointerId !== state.pointerId) return;
       if (!cancelled) dragTo(event.clientX);
