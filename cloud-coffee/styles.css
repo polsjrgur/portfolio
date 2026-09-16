@@ -4,7 +4,8 @@
   --line: rgba(59, 37, 28, 0.22);
   --cloud-pink: #ad8582;
   --cloud-green: #6f7860;
-  --detail-width: min(80vw, 1500px);
+  --cloud-case-width: min(84vw, 1540px);
+  --detail-width: var(--cloud-case-width);
 }
 
 html,
@@ -23,11 +24,26 @@ body.cloud-coffee-page,
 }
 
 .cloud-hero {
-  min-height: 76svh;
-  padding: 23svh 0 5svh;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
-  gap: clamp(72px, 8vw, 150px);
-  align-items: start;
+  width: 100%;
+  min-height: 78svh;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.cloud-hero__content {
+  width: var(--cloud-case-width);
+  margin-inline: auto;
+  padding-top: 25svh;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(360px, 3fr);
+  column-gap: clamp(80px, 8vw, 150px);
+  align-items: end;
+}
+
+.cloud-hero__content .project-hero__title {
+  min-width: 0;
+  align-self: stretch;
 }
 
 .cloud-hero h1 span {
@@ -65,7 +81,7 @@ body.cloud-coffee-page,
 }
 
 .cloud-hero .project-meta div {
-  padding: clamp(16px, 1.2vw, 20px) 0;
+  padding: clamp(16px, 1vw, 20px) 0;
   grid-template-columns: minmax(108px, 0.75fr) minmax(0, 1.25fr);
   gap: clamp(18px, 1.8vw, 28px);
 }
@@ -87,6 +103,17 @@ body.cloud-coffee-page,
   margin-top: 0;
 }
 
+.cloud-hero-media {
+  width: var(--cloud-case-width);
+  margin-inline: auto;
+}
+
+.cloud-hero-media img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+}
+
 .cloud-coffee-page .project-media img {
   max-width: 100%;
   object-fit: contain;
@@ -103,38 +130,28 @@ body.cloud-coffee-page,
   max-height: 78svh;
 }
 
-.cloud-introduction {
-  width: var(--detail-width);
+.cloud-project-summary {
+  width: var(--cloud-case-width);
   margin-inline: auto;
-  padding-top: 14svh;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
-  gap: 9vw;
-  align-items: start;
+  padding-block: clamp(120px, 15svh, 190px);
 }
 
-.cloud-statement,
-.cloud-interstitial {
-  margin: 0;
-  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
-  font-weight: 500;
+.cloud-project-summary p {
+  max-width: 1380px;
+  margin: 0 auto;
+  color: #56443a;
+  text-align: center;
+  font-size: clamp(24px, 2vw, 38px);
+  font-weight: 600;
+  line-height: 1.22;
   letter-spacing: 0;
 }
 
-.cloud-statement {
-  max-width: 760px;
-  color: var(--cloud-pink);
-  font-size: clamp(48px, 5.3vw, 102px);
-  line-height: 0.98;
-}
-
-.cloud-introduction__copy {
-  max-width: 600px;
-  margin: 0;
-  color: #56443a;
-  font-size: clamp(18px, 1.35vw, 24px);
-  font-weight: 600;
-  line-height: 1.54;
+.cloud-interstitial {
+  margin-inline: auto;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 .cloud-section-heading {
@@ -158,10 +175,6 @@ body.cloud-coffee-page,
 .cloud-section-heading h2 {
   max-width: 800px;
   font-size: clamp(54px, 5.6vw, 108px);
-}
-
-.cloud-origin-overview {
-  margin-bottom: 8svh;
 }
 
 .cloud-origin-grid {
@@ -346,6 +359,10 @@ body.cloud-coffee-page,
   padding-top: 16svh;
 }
 
+.cloud-coffee-page .cloud-place {
+  padding-top: 0;
+}
+
 .cloud-ending h2 {
   max-width: 1260px;
   font-size: clamp(50px, 5.7vw, 108px);
@@ -362,15 +379,9 @@ body.cloud-coffee-page,
 }
 
 @media (max-width: 1050px) {
-  .cloud-hero {
-    min-height: 76svh;
-    grid-template-columns: minmax(0, 1fr) minmax(330px, 400px);
-    gap: clamp(44px, 6vw, 72px);
-  }
-
-  .cloud-introduction {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.78fr);
-    gap: 7vw;
+  .cloud-hero__content {
+    grid-template-columns: minmax(0, 7fr) minmax(360px, 3fr);
+    column-gap: clamp(56px, 7vw, 80px);
   }
 
   .cloud-poster-pair {
@@ -381,19 +392,16 @@ body.cloud-coffee-page,
 @media (max-width: 850px) {
   .cloud-hero {
     min-height: 90svh;
-    padding: 150px 0 48px;
+    padding: 0;
+  }
+
+  .cloud-hero__content {
+    padding-top: 150px;
+    display: block;
   }
 
   .cloud-hero .project-hero__introduction {
     margin-top: 48px;
-  }
-
-  .cloud-introduction {
-    display: block;
-  }
-
-  .cloud-introduction__copy {
-    margin-top: 52px;
   }
 
   .cloud-heading-block {
@@ -403,7 +411,8 @@ body.cloud-coffee-page,
 
 @media (max-width: 760px) {
   :root {
-    --detail-width: calc(100vw - 40px);
+    --cloud-case-width: calc(100vw - 40px);
+    --detail-width: var(--cloud-case-width);
   }
 
   .cloud-coffee-page .menu-button {
@@ -412,7 +421,13 @@ body.cloud-coffee-page,
 
   .cloud-hero {
     min-height: 90svh;
-    padding: 126px 0 32px;
+    padding: 0;
+  }
+
+  .cloud-hero__content {
+    width: var(--cloud-case-width);
+    padding-top: 126px;
+    display: block;
   }
 
   .cloud-hero h1 {
@@ -442,17 +457,13 @@ body.cloud-coffee-page,
     font-size: 15px;
   }
 
-  .cloud-introduction {
-    padding-top: 96px;
+  .cloud-project-summary {
+    width: var(--cloud-case-width);
+    padding-block: 96px;
   }
 
-  .cloud-statement {
-    font-size: clamp(46px, 13vw, 64px);
-  }
-
-  .cloud-introduction__copy {
-    margin-top: 42px;
-    font-size: 17px;
+  .cloud-project-summary p {
+    font-size: clamp(22px, 6vw, 30px);
   }
 
   .cloud-section-heading {
@@ -484,6 +495,10 @@ body.cloud-coffee-page,
     padding-top: 96px;
   }
 
+  .cloud-coffee-page .cloud-place {
+    padding-top: 0;
+  }
+
   .cloud-origin-grid .project-media + .project-media,
   .cloud-poster-pair .project-media + .project-media,
   .cloud-card-pair .project-media + .project-media {
@@ -513,10 +528,6 @@ body.cloud-coffee-page,
 
   .cloud-main-poster {
     width: var(--detail-width);
-  }
-
-  .cloud-origin-overview {
-    margin-bottom: 56px;
   }
 
   .cloud-interstitial {
