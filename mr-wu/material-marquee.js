@@ -26,7 +26,7 @@
     const shouldRun = state.isInViewport
       && !document.hidden
       && !state.isHovered
-      && !state.isTouched
+      && !state.isDragging
       && !reducedMotion.matches;
 
     state.marquee.classList.toggle('is-running', shouldRun);
@@ -98,7 +98,11 @@
       clones: [],
       isInViewport: false,
       isHovered: false,
-      isTouched: false
+      isDragging: false,
+      pointerId: null,
+      startX: 0,
+      startTime: 0,
+      animation: null
     };
 
     stateByElement.set(marquee, state);
@@ -106,26 +110,66 @@
       image.loading = 'eager';
     });
 
-    addListener(marquee, 'pointerenter', () => {
+    addListener(marquee, 'pointerenter', (event) => {
+      if (event.pointerType === 'touch') return;
       state.isHovered = true;
       updatePlayback(state);
     });
-    addListener(marquee, 'pointerleave', () => {
+    addListener(marquee, 'pointerleave', (event) => {
+      if (event.pointerType === 'touch') return;
       state.isHovered = false;
       updatePlayback(state);
     });
-    addListener(marquee, 'touchstart', () => {
-      state.isTouched = true;
+
+    function dragTo(clientX) {
+      if (reducedMotion.matches) {
+        marquee.scrollLeft -= clientX - state.startX;
+        state.startX = clientX;
+        return;
+      }
+
+      const distance = state.originalGroup.getBoundingClientRect().width;
+      const duration = state.animation?.effect?.getComputedTiming().duration;
+      if (!distance || !Number.isFinite(duration) || !duration) return;
+
+      const time = state.startTime - (clientX - state.startX) * duration / distance;
+      state.animation.currentTime = ((time % duration) + duration) % duration;
+    }
+
+    function finishDrag(event, cancelled = false) {
+      if (event.pointerId !== state.pointerId) return;
+      if (!cancelled) dragTo(event.clientX);
+      state.isDragging = false;
+      state.pointerId = null;
+      state.animation = null;
+      if (event.pointerType === 'touch') {
+        state.isHovered = false;
+      } else {
+        const bounds = marquee.getBoundingClientRect();
+        state.isHovered = event.clientX >= bounds.left && event.clientX <= bounds.right
+          && event.clientY >= bounds.top && event.clientY <= bounds.bottom;
+      }
       updatePlayback(state);
-    }, { passive: true });
-    addListener(marquee, 'touchend', () => {
-      state.isTouched = false;
+      if (marquee.hasPointerCapture(event.pointerId)) marquee.releasePointerCapture(event.pointerId);
+    }
+
+    addListener(marquee, 'pointerdown', (event) => {
+      if (state.isDragging || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      state.animation = reducedMotion.matches ? null : track.getAnimations()[0];
+      state.startTime = state.animation?.currentTime ?? 0;
+      state.startX = event.clientX;
+      state.pointerId = event.pointerId;
+      state.isDragging = true;
+      marquee.setPointerCapture(event.pointerId);
       updatePlayback(state);
-    }, { passive: true });
-    addListener(marquee, 'touchcancel', () => {
-      state.isTouched = false;
-      updatePlayback(state);
-    }, { passive: true });
+      if (event.pointerType === 'mouse') event.preventDefault();
+    });
+    addListener(marquee, 'pointermove', (event) => {
+      if (state.isDragging && event.pointerId === state.pointerId) dragTo(event.clientX);
+    });
+    addListener(marquee, 'pointerup', (event) => finishDrag(event));
+    addListener(marquee, 'pointercancel', (event) => finishDrag(event, true));
+    addListener(marquee, 'lostpointercapture', (event) => finishDrag(event, true));
 
     originalGroup.querySelectorAll('img').forEach((image) => {
       if (!image.complete) addListener(image, 'load', requestMetricsUpdate, { once: true });
