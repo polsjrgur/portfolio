@@ -1,16 +1,16 @@
 :root {
-  --paper: #f8f3ec;
+  --paper: #ffffff;
   --ink: #3b251c;
   --line: rgba(59, 37, 28, 0.22);
   --cloud-pink: #ad8582;
   --cloud-green: #6f7860;
-  --detail-width: min(78vw, 1480px);
+  --detail-width: min(80vw, 1500px);
 }
 
 html,
-body,
-.project-section {
-  background: var(--paper);
+body.cloud-coffee-page,
+.cloud-coffee-page .project-section {
+  background: #ffffff;
 }
 
 .cloud-coffee-page {
@@ -23,10 +23,11 @@ body,
 }
 
 .cloud-hero {
-  min-height: 104svh;
-  padding-bottom: 13svh;
-  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.68fr);
-  gap: 8vw;
+  min-height: 76svh;
+  padding: 23svh 0 5svh;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
+  gap: clamp(72px, 8vw, 150px);
+  align-items: start;
 }
 
 .cloud-hero h1 span {
@@ -34,36 +35,78 @@ body,
 }
 
 .cloud-hero h1 {
-  font-size: clamp(72px, 7.6vw, 146px);
-  line-height: 0.9;
+  font-size: clamp(64px, 5vw, 104px);
+  line-height: 0.92;
+  font-weight: 500;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .cloud-subtitle {
   max-width: 520px;
-  margin: 5svh 0 0;
+  margin: clamp(20px, 2.6svh, 28px) 0 0;
   color: var(--cloud-green);
-  font-size: clamp(17px, 1.35vw, 24px);
-  font-weight: 700;
+  font-size: clamp(18px, 1.25vw, 25px);
+  font-weight: 500;
   line-height: 1.3;
 }
 
 .cloud-hero .project-hero__introduction {
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding-top: 0;
 }
 
 .cloud-hero .project-meta {
+  width: 100%;
   margin-top: 0;
+  border-top-color: var(--ink);
+}
+
+.cloud-hero .project-meta div {
+  padding: clamp(16px, 1.2vw, 20px) 0;
+  grid-template-columns: minmax(108px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(18px, 1.8vw, 28px);
+}
+
+.cloud-hero .project-meta dt {
+  color: #846f64;
+  font-size: clamp(13px, 0.78vw, 15px);
+  font-weight: 700;
+}
+
+.cloud-hero .project-meta dd {
+  color: var(--ink);
+  font-size: clamp(16px, 1vw, 19px);
+  font-weight: 500;
+  line-height: 1.35;
 }
 
 .cloud-hero-image {
-  margin-top: 2svh;
+  margin-top: 0;
+}
+
+.cloud-coffee-page .project-media img {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.cloud-coffee-page .project-media--wide {
+  width: var(--detail-width);
+  display: flex;
+  justify-content: center;
+}
+
+.cloud-coffee-page .project-media--wide img {
+  width: auto;
+  max-height: 78svh;
 }
 
 .cloud-introduction {
   width: var(--detail-width);
   margin-inline: auto;
-  padding-top: 18svh;
+  padding-top: 14svh;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
   gap: 9vw;
@@ -95,7 +138,7 @@ body,
 }
 
 .cloud-section-heading {
-  margin-bottom: 10svh;
+  margin-bottom: 8svh;
   align-items: end;
 }
 
@@ -118,7 +161,7 @@ body,
 }
 
 .cloud-origin-overview {
-  margin-bottom: 10svh;
+  margin-bottom: 8svh;
 }
 
 .cloud-origin-grid {
@@ -143,14 +186,23 @@ body,
 }
 
 .cloud-process-feature {
-  margin-top: 15svh;
+  margin-top: 14svh;
   grid-template-columns: minmax(280px, 0.54fr) minmax(360px, 0.62fr);
   gap: 11vw;
 }
 
 .cloud-process-feature__image {
-  width: min(31vw, 560px);
+  width: clamp(320px, 30vw, 520px);
   justify-self: end;
+}
+
+.cloud-process-feature__image img,
+.cloud-apparel-feature__image img,
+.cloud-main-poster img,
+.cloud-poster-pair .project-media img {
+  width: auto;
+  max-height: 78svh;
+  margin-inline: auto;
 }
 
 .cloud-process-feature__copy,
@@ -164,14 +216,14 @@ body,
 }
 
 .cloud-main-poster {
-  width: min(50vw, 900px);
+  width: clamp(320px, 30vw, 520px);
   margin-inline: auto;
 }
 
 .cloud-interstitial {
   width: var(--detail-width);
   max-width: 1160px;
-  margin: 18svh auto;
+  margin: 14svh auto;
   color: var(--cloud-green);
   font-size: clamp(54px, 6.3vw, 120px);
   line-height: 0.96;
@@ -179,46 +231,48 @@ body,
 
 .cloud-poster-pair,
 .cloud-card-pair {
-  width: var(--detail-width);
   margin-inline: auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: center;
   align-items: start;
 }
 
 .cloud-poster-pair {
-  gap: clamp(22px, 4vw, 80px);
-  padding-inline: 5vw;
+  width: min(72vw, 1080px);
+  grid-template-columns: repeat(2, minmax(0, 520px));
+  gap: clamp(24px, 3vw, 40px);
 }
 
 .cloud-card-pair {
-  gap: clamp(18px, 2vw, 38px);
+  width: min(72vw, 1250px);
+  gap: clamp(20px, 2vw, 40px);
 }
 
 .cloud-card-scene,
 .cloud-menu-image {
-  margin-top: 13svh;
+  margin-top: 12svh;
 }
 
 .cloud-loyalty-pair {
-  margin-top: 13svh;
+  margin-top: 12svh;
 }
 
 .cloud-apparel-feature {
-  margin-top: 15svh;
+  margin-top: 14svh;
   grid-template-columns: minmax(300px, 0.62fr) minmax(360px, 0.58fr);
   gap: 11vw;
 }
 
 .cloud-apparel-feature__image {
-  width: min(34vw, 620px);
+  width: clamp(360px, 28vw, 520px);
   justify-self: end;
 }
 
 .cloud-gallery-section {
-  padding-top: 22svh;
+  padding-top: 16svh;
   overflow: hidden;
-  background: var(--paper);
+  background: #ffffff;
 }
 
 .cloud-gallery {
@@ -262,7 +316,7 @@ body,
 
 .cloud-gallery__item {
   flex: none;
-  height: clamp(360px, 52svh, 560px);
+  height: clamp(280px, 38svh, 430px);
   margin: 0;
   display: flex;
   align-items: center;
@@ -284,8 +338,12 @@ body,
 }
 
 .cloud-ending {
-  min-height: 96svh;
-  padding-top: 22svh;
+  min-height: 82svh;
+  padding-top: 18svh;
+}
+
+.cloud-coffee-page .project-section {
+  padding-top: 16svh;
 }
 
 .cloud-ending h2 {
@@ -305,8 +363,9 @@ body,
 
 @media (max-width: 1050px) {
   .cloud-hero {
-    min-height: 0;
-    grid-template-columns: minmax(0, 0.9fr) minmax(330px, 0.7fr);
+    min-height: 76svh;
+    grid-template-columns: minmax(0, 1fr) minmax(330px, 400px);
+    gap: clamp(44px, 6vw, 72px);
   }
 
   .cloud-introduction {
@@ -321,7 +380,12 @@ body,
 
 @media (max-width: 850px) {
   .cloud-hero {
-    padding-bottom: 110px;
+    min-height: 90svh;
+    padding: 150px 0 48px;
+  }
+
+  .cloud-hero .project-hero__introduction {
+    margin-top: 48px;
   }
 
   .cloud-introduction {
@@ -338,21 +402,48 @@ body,
 }
 
 @media (max-width: 760px) {
+  :root {
+    --detail-width: calc(100vw - 40px);
+  }
+
+  .cloud-coffee-page .menu-button {
+    margin-left: auto;
+  }
+
   .cloud-hero {
-    padding-bottom: 88px;
+    min-height: 90svh;
+    padding: 126px 0 32px;
   }
 
   .cloud-hero h1 {
-    font-size: clamp(62px, 18vw, 88px);
+    font-size: clamp(54px, 15vw, 78px);
   }
 
   .cloud-subtitle {
-    margin-top: 30px;
-    font-size: 17px;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  .cloud-hero .project-hero__introduction {
+    margin-top: 38px;
+  }
+
+  .cloud-hero .project-meta div {
+    padding: 14px 0;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .cloud-hero .project-meta dt {
+    font-size: 12px;
+  }
+
+  .cloud-hero .project-meta dd {
+    font-size: 15px;
   }
 
   .cloud-introduction {
-    padding-top: 112px;
+    padding-top: 96px;
   }
 
   .cloud-statement {
@@ -389,6 +480,10 @@ body,
     display: block;
   }
 
+  .cloud-coffee-page .project-section {
+    padding-top: 96px;
+  }
+
   .cloud-origin-grid .project-media + .project-media,
   .cloud-poster-pair .project-media + .project-media,
   .cloud-card-pair .project-media + .project-media {
@@ -401,12 +496,12 @@ body,
 
   .cloud-process-feature,
   .cloud-apparel-feature {
-    margin-top: 96px;
+    margin-top: 88px;
   }
 
   .cloud-process-feature__image,
   .cloud-apparel-feature__image {
-    width: min(78vw, 520px);
+    width: min(100%, 520px);
     margin-inline: auto;
   }
 
@@ -432,11 +527,11 @@ body,
   .cloud-card-scene,
   .cloud-menu-image,
   .cloud-loyalty-pair {
-    margin-top: 88px;
+    margin-top: 72px;
   }
 
   .cloud-gallery-section {
-    padding-top: 132px;
+    padding-top: 96px;
   }
 
   .cloud-gallery__track {
@@ -444,7 +539,7 @@ body,
   }
 
   .cloud-gallery__item {
-    height: min(42svh, 360px);
+    height: min(42svh, 340px);
     max-width: 80vw;
   }
 
@@ -456,8 +551,8 @@ body,
   }
 
   .cloud-ending {
-    min-height: 88svh;
-    padding-top: 132px;
+    min-height: 80svh;
+    padding-top: 104px;
   }
 
   .cloud-ending h2 {
