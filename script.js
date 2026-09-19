@@ -23,7 +23,7 @@ const CURSOR_STATE = Object.freeze({
 
 const projects = {
   soultube: {
-    number: 'Project 01 / 07',
+    number: 'Project 01 / 08',
     title: 'Soultube',
     category: 'Digital product / Art direction',
     description: 'A music application concept that turns listening patterns into emotional spaces people can explore and share.',
@@ -31,7 +31,7 @@ const projects = {
     url: './soultube/'
   },
   harmony: {
-    number: 'Project 02 / 07',
+    number: 'Project 02 / 08',
     title: 'False Harmony',
     category: 'Installation / Visual narrative',
     description: 'An installation-led visual narrative exploring care, repetition and the tension between closeness and emotional distance.',
@@ -39,7 +39,7 @@ const projects = {
     url: './false-harmony/'
   },
   safe: {
-    number: 'Project 03 / 07',
+    number: 'Project 03 / 08',
     title: 'Safe?',
     category: 'Editorial / Illustration',
     description: 'A visual study of protection and restriction, asking when safety supports growth and when it begins to limit it.',
@@ -47,14 +47,14 @@ const projects = {
     url: './safe/'
   },
   designjob: {
-    number: 'Project 04 / 07',
+    number: 'Project 04 / 08',
     title: 'Design Job',
     category: 'Exhibition / Editorial identity',
     description: 'A restrained exhibition identity built through precise typography, printed matter and a modular geometric language.',
     image: './assets/work-design-job.png'
   },
   cloudcoffee: {
-    number: 'Project 05 / 07',
+    number: 'Project 05 / 08',
     title: 'Cloud Coffee',
     category: 'Brand identity / Campaign',
     description: 'A tactile coffee identity combining local landscape, expressive typography and surreal product imagery.',
@@ -62,19 +62,27 @@ const projects = {
     url: './cloud-coffee/'
   },
   yiguo: {
-    number: 'Project 06 / 07',
+    number: 'Project 06 / 08',
     title: 'Yi Grow',
     category: 'Education / Brand communication',
     description: 'A bold campaign for an art education space, pairing direct information design with a memorable graphic symbol.',
     image: './assets/work-yiguo.png'
   },
   untitled: {
-    number: 'Project 07 / 07',
+    number: 'Project 07 / 08',
     title: 'The Digital of Dan Role',
     category: 'Visual design / Experimental',
     description: 'An experimental visual project developed through composition, image making and a tightly controlled graphic system.',
     image: './mr-wu/assets/packaging/collection-claw-vertical.png',
     url: './mr-wu/'
+  },
+  harmonyis: {
+    number: 'Project 08 / 08',
+    title: 'Harmony Is...',
+    category: 'Poster Design / Visual Communication',
+    description: 'A three-poster series that reopens the traditional idea of harmony through fragmented characters, human movement and the changing trajectories of relationships.',
+    image: './assets/work-harmony-is.jpg',
+    url: './harmony-is/'
   }
 };
 

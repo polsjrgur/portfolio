@@ -1,0 +1,216 @@
+.harmony-is-page {
+  background: #ffffff;
+}
+
+.harmony-is-hero {
+  min-height: 0;
+  padding-top: clamp(150px, 18svh, 194px);
+  padding-bottom: clamp(48px, 6svh, 72px);
+  grid-template-columns: minmax(0, 0.95fr) minmax(390px, 0.82fr);
+  gap: clamp(72px, 8vw, 150px);
+  align-items: start;
+}
+
+.harmony-is-hero h1 span {
+  display: block;
+}
+
+.harmony-is-hero h1 {
+  font-size: clamp(72px, 7.2vw, 138px);
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.harmony-is-hero .project-hero__introduction {
+  padding-top: 0;
+}
+
+.harmony-is-main-image {
+  overflow: hidden;
+}
+
+.harmony-is-main-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.harmony-is-concept {
+  padding-top: clamp(120px, 18svh, 210px);
+}
+
+.harmony-is-concept__heading {
+  align-items: start;
+  margin-bottom: 0;
+}
+
+.harmony-is-concept__heading h2 {
+  font-size: clamp(58px, 6vw, 112px);
+}
+
+.harmony-is-concept__copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.harmony-is-concept__copy p {
+  max-width: 620px;
+  margin: 0;
+  color: #3f3f3f;
+  font-size: clamp(16px, 1.15vw, 21px);
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.harmony-is-concept__copy p + p {
+  margin-top: clamp(28px, 3.5svh, 48px);
+}
+
+.harmony-is-award {
+  padding-top: clamp(140px, 22svh, 250px);
+}
+
+.harmony-is-award__layout {
+  width: var(--detail-width);
+  min-height: 60svh;
+  margin-inline: auto;
+  padding-block: 4svh 10svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6vw;
+  align-items: end;
+  border-top: 1px solid var(--ink);
+}
+
+.harmony-is-award__status {
+  margin: 0 0 3svh;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(44px, 5vw, 96px);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.harmony-is-award h2 {
+  max-width: 720px;
+  margin: 0;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(24px, 2.2vw, 44px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.harmony-is-award__year {
+  margin: 0;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(64px, 7.2vw, 138px);
+  font-weight: 500;
+  line-height: 0.74;
+  letter-spacing: 0;
+}
+
+.harmony-is-ending h2 {
+  max-width: 1120px;
+  font-size: clamp(56px, 5.6vw, 106px);
+}
+
+@media (max-width: 1050px) {
+  .harmony-is-hero {
+    grid-template-columns: minmax(0, 0.86fr) minmax(320px, 0.8fr);
+    gap: 6vw;
+  }
+
+  .harmony-is-award__layout {
+    grid-template-columns: 1fr;
+    align-content: end;
+  }
+
+  .harmony-is-award__year {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 850px) {
+  .harmony-is-hero {
+    padding-top: 136px;
+    padding-bottom: 64px;
+  }
+
+  .harmony-is-hero .project-hero__introduction {
+    margin-top: 64px;
+  }
+
+  .harmony-is-concept__copy {
+    margin-top: 44px;
+  }
+}
+
+@media (max-width: 760px) {
+  .harmony-is-hero {
+    padding-top: 112px;
+    padding-bottom: 40px;
+  }
+
+  .harmony-is-hero h1 {
+    font-size: clamp(62px, 18vw, 86px);
+    white-space: normal;
+  }
+
+  .harmony-is-hero .project-hero__introduction {
+    margin-top: 42px;
+  }
+
+  .harmony-is-hero .project-meta {
+    margin-top: 40px;
+  }
+
+  .harmony-is-hero .project-meta div {
+    padding-block: 14px;
+  }
+
+  .harmony-is-concept {
+    padding-top: 112px;
+  }
+
+  .harmony-is-concept__heading h2 {
+    font-size: clamp(48px, 14vw, 72px);
+  }
+
+  .harmony-is-concept__copy {
+    grid-column: auto;
+    grid-row: auto;
+    margin-top: 34px;
+  }
+
+  .harmony-is-concept__copy p {
+    font-size: 16px;
+  }
+
+  .harmony-is-award {
+    padding-top: 128px;
+  }
+
+  .harmony-is-award__layout {
+    min-height: 62svh;
+    padding-block: 28px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 48px;
+  }
+
+  .harmony-is-award__status {
+    margin-bottom: 24px;
+    font-size: clamp(44px, 13vw, 64px);
+  }
+
+  .harmony-is-award h2 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .harmony-is-award__year {
+    font-size: clamp(68px, 22vw, 96px);
+  }
+}
