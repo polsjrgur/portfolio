@@ -151,8 +151,8 @@ img { display: block; width: 100%; }
   padding: 0 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 25px;
+  justify-content: center;
+  gap: 11px;
   border: 0;
   border-radius: 23px;
   background: var(--ink);
@@ -219,8 +219,8 @@ img { display: block; width: 100%; }
   padding: 0 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 30px;
+  justify-content: center;
+  gap: 11px;
   white-space: nowrap;
 }
 
@@ -257,7 +257,8 @@ img { display: block; width: 100%; }
 
 .primary-action.is-fill-expanded .arrow-icon,
 .contact-button:hover .arrow-icon,
-.secondary-action:hover .arrow-icon {
+.secondary-action:hover .arrow-icon,
+.secondary-action:focus-visible .arrow-icon {
   transform: translateX(5px);
 }
 
@@ -295,7 +296,7 @@ body.nav-in-shutter > .site-header { visibility: hidden; }
 .hero-contact-slot {
   position: absolute;
   z-index: 115;
-  top: 4.4vh;
+  top: calc(4.4vh - 7px);
   right: calc(3.5vw + 69px);
 }
 
@@ -399,8 +400,8 @@ body.nav-in-shutter > .site-header { visibility: hidden; }
   min-height: 45px;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 30px;
+  justify-content: center;
+  gap: 11px;
   color: inherit;
   font-size: 13px;
   font-weight: 700;
@@ -420,7 +421,31 @@ body.nav-in-shutter > .site-header { visibility: hidden; }
   transition: border-color 0.14s ease;
 }
 
-.secondary-action { min-width: 132px; padding: 0 2px; }
+.secondary-action { min-width: 132px; padding: 0 2px; justify-content: flex-start; }
+
+.secondary-action__content {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  white-space: nowrap;
+}
+
+.secondary-action__content::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s ease;
+}
+
+.secondary-action:hover .secondary-action__content::after,
+.secondary-action:focus-visible .secondary-action__content::after { transform: scaleX(1); }
 
 .reveal-ui, .reveal-copy {
   opacity: 0;
@@ -1006,6 +1031,14 @@ body.nav-in-shutter > .site-header { visibility: hidden; }
   transition: color 0.2s ease;
 }
 
+.award-item--harmony { grid-template-columns: minmax(170px, 0.32fr) minmax(0, 1fr); }
+.award-item--harmony .award-name small {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.78em;
+  font-weight: 600;
+}
+
 .contact-profile-copy { padding-top: 1svh; }
 
 .interest-list p {
@@ -1362,7 +1395,7 @@ body.cursor-visible .cursor-position { opacity: 1; }
   .statement p { font-size: 16px; }
   .hero-actions { margin-top: 24px; gap: 18px; }
   .primary-action { min-width: 158px; }
-  .secondary-action { min-width: 116px; gap: 18px; }
+  .secondary-action { min-width: 116px; }
 
   .poster-zone {
     position: relative;
@@ -1375,13 +1408,11 @@ body.cursor-visible .cursor-position { opacity: 1; }
 
   .poster-stage { inset: 0; }
 
-  .poster-card--front { top: 49% !important; left: 0 !important; }
-  .poster-card--two { top: 42% !important; left: 5% !important; }
-  .poster-card--three { top: 35% !important; left: 10% !important; }
-  .poster-card--four { top: 28% !important; left: 15% !important; }
-  .poster-card--five { top: 21% !important; left: 20% !important; }
-  .poster-card--six { top: 14% !important; left: 25% !important; }
-  .poster-card--seven { top: 7% !important; left: 30% !important; }
+  .poster-card--front { top: 40% !important; left: 0 !important; }
+  .poster-card--two { top: 32% !important; left: 7% !important; }
+  .poster-card--three { top: 24% !important; left: 14% !important; }
+  .poster-card--four { top: 16% !important; left: 21% !important; }
+  .poster-card--seven { top: 8% !important; left: 28% !important; }
   .poster-card--eight { top: 0 !important; left: 35% !important; }
 
   .poster-zone.is-expanded .poster-card { --expand-x: 0px; --expand-y: 0px; }
@@ -1514,6 +1545,7 @@ body.cursor-visible .cursor-position { opacity: 1; }
   .award-status,
   .award-name { opacity: 1 !important; transform: none !important; }
   .award-status { font-size: 14px; }
+  .award-item--harmony { grid-template-columns: 100px minmax(0, 1fr); }
   .award-name {
     display: block;
     font-size: 15px;

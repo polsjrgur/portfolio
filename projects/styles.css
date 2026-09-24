@@ -1,0 +1,122 @@
+.projects-page {
+  --projects-width: min(84vw, 1540px);
+  background: #ffffff;
+}
+
+.projects-page .menu-button { pointer-events: auto; }
+
+.projects-content {
+  width: var(--projects-width);
+  margin: 0 auto;
+  padding-top: clamp(190px, 24svh, 290px);
+}
+
+.projects-heading {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: clamp(96px, 12svh, 150px);
+}
+
+.projects-kicker,
+.projects-count,
+.projects-item__number,
+.projects-item__category {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.projects-heading h1 {
+  max-width: 100%;
+  margin: 24px 0 34px;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(68px, 8.4vw, 160px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.projects-count { align-self: flex-end; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(22px, 2.4vw, 42px);
+  row-gap: clamp(94px, 12svh, 155px);
+}
+
+.projects-item {
+  min-width: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: transparent;
+  text-align: left;
+  text-decoration: none;
+}
+
+.projects-item__media {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin: 0 0 22px;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+
+.projects-item__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projects-item:hover .projects-item__media img,
+.projects-item:focus-visible .projects-item__media img { transform: scale(1.035); }
+
+.js .projects-item:hover .media-reveal.is-visible img,
+.js .projects-item:focus-visible .media-reveal.is-visible img { transform: scale(1.035); }
+
+.projects-item__number { color: #777; }
+
+.projects-item__title {
+  margin-top: 12px;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(26px, 2.25vw, 42px);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.projects-item__category { margin-top: 9px; color: #555; }
+
+.projects-footer {
+  margin-top: clamp(150px, 20svh, 270px);
+  padding: 32px 0 60px;
+  border-top: 1px solid #111;
+  text-align: right;
+}
+
+.projects-footer a { display: inline-flex; align-items: center; gap: 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+
+@media (max-width: 1050px) {
+  .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .projects-page { --projects-width: calc(100vw - 40px); }
+  .projects-content { padding-top: 150px; }
+  .projects-heading { padding-bottom: 82px; }
+  .projects-heading h1 { font-size: clamp(54px, 14vw, 90px); }
+  .projects-grid { grid-template-columns: 1fr; row-gap: 72px; }
+  .projects-item__media { aspect-ratio: 4 / 4.5; }
+  .projects-item__title { font-size: 32px; }
+  .projects-footer { margin-top: 130px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-item__media img { transition: none; }
+}

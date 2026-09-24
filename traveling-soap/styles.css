@@ -1,0 +1,133 @@
+.traveling-soap-page { background: #ffffff; }
+
+.soap-hero {
+  min-height: 0;
+  padding-top: clamp(150px, 19svh, 205px);
+  padding-bottom: clamp(52px, 7svh, 82px);
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.86fr);
+  gap: clamp(54px, 7vw, 140px);
+}
+
+.soap-hero h1 {
+  font-size: clamp(64px, 6.3vw, 122px);
+  line-height: 0.94;
+}
+
+.soap-subtitle {
+  max-width: 560px;
+  margin: clamp(22px, 3svh, 38px) 0 0;
+  font-size: clamp(18px, 1.4vw, 25px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.soap-hero .project-hero__introduction { padding-top: 0; }
+.soap-hero .project-meta { margin-top: clamp(32px, 5svh, 56px); }
+.soap-hero .project-meta div { padding-block: 14px; }
+
+.soap-main-image img { width: 100%; height: auto; object-fit: contain; }
+
+.soap-section {
+  width: var(--detail-width);
+  margin-inline: auto;
+  padding-top: clamp(110px, 16svh, 190px);
+}
+
+.soap-section-heading {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 6vw;
+  align-items: end;
+  margin-bottom: clamp(42px, 7svh, 76px);
+}
+
+.soap-section-index {
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.soap-section-heading h2 {
+  margin: 0;
+  font-family: "Portfolio Futura Medium", "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-size: clamp(42px, 4.3vw, 82px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.soap-package-grid,
+.soap-label-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+}
+
+.soap-package-grid { gap: clamp(16px, 2vw, 32px); }
+.soap-label-grid { gap: clamp(24px, 3vw, 56px); }
+.js .soap-label.media-reveal { overflow: visible; }
+
+.soap-package-grid figure,
+.soap-label-grid figure { min-width: 0; margin: 0; }
+
+.soap-package-grid img,
+.soap-label-grid img { width: 100%; height: auto; object-fit: contain; }
+
+.soap-label-motion {
+  transform-origin: 50% 0;
+  animation: soap-breeze 7.8s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+.soap-label:nth-child(2) .soap-label-motion { animation-duration: 8.7s; animation-delay: -2.3s; }
+.soap-label:nth-child(3) .soap-label-motion { animation-duration: 7.1s; animation-delay: -4.5s; }
+.soap-label:nth-child(4) .soap-label-motion { animation-duration: 9.2s; animation-delay: -1.1s; }
+.soap-label-grid.is-in-view:not(.is-page-hidden) .soap-label-motion { animation-play-state: running; }
+
+@keyframes soap-breeze {
+  from { transform: translateY(-3px) rotate(-0.65deg); }
+  to { transform: translateY(4px) rotate(0.65deg); }
+}
+
+.soap-final-label {
+  width: min(32vw, 430px);
+  margin: clamp(135px, 20svh, 230px) auto 0;
+}
+
+.soap-final-label img { width: 100%; height: auto; object-fit: contain; }
+
+.soap-ending {
+  width: var(--detail-width);
+  margin: clamp(120px, 18svh, 190px) auto 0;
+  padding: 30px 0 clamp(50px, 8svh, 90px);
+  border-top: 1px solid var(--ink);
+}
+
+@media (max-width: 850px) {
+  .soap-hero { display: block; }
+  .soap-hero .project-hero__introduction { margin-top: 55px; }
+  .soap-package-grid, .soap-label-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 50px; }
+}
+
+@media (max-width: 760px) {
+  .soap-hero { padding-top: 112px; padding-bottom: 42px; }
+  .soap-hero h1 { font-size: clamp(60px, 15vw, 86px); }
+  .soap-subtitle { margin-top: 24px; font-size: 18px; }
+  .soap-hero .project-hero__introduction { margin-top: 34px; }
+  .soap-hero .project-intro { font-size: 16px; }
+  .soap-hero .project-meta { margin-top: 32px; }
+  .soap-hero .project-meta div { padding-block: 11px; }
+  .soap-section { padding-top: 112px; }
+  .soap-section-heading { display: block; margin-bottom: 36px; }
+  .soap-section-heading h2 { margin-top: 15px; font-size: clamp(40px, 11vw, 58px); }
+  .soap-package-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .soap-label-grid { grid-template-columns: 1fr; gap: 54px; justify-items: center; }
+  .soap-label { width: min(70vw, 330px); }
+  .soap-final-label { width: min(70vw, 330px); margin-top: 120px; }
+  .soap-ending { margin-top: 116px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soap-label-motion { animation: none; transform: none; }
+}
