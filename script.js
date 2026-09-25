@@ -127,10 +127,12 @@ function renderCursorMorph(deltaTime) {
 function setCursorState(nextState) {
   if (nextState === cursorState) return;
 
+  const wasMorphing = cursorState === CURSOR_STATE.POSTER || cursorState === CURSOR_STATE.LOGO;
+  const willMorph = nextState === CURSOR_STATE.POSTER || nextState === CURSOR_STATE.LOGO;
   if (cursorState === CURSOR_STATE.POSTER) {
     deactivatePosterState();
   }
-  if (cursorState === CURSOR_STATE.POSTER || cursorState === CURSOR_STATE.LOGO) {
+  if (wasMorphing && !willMorph) {
     exitPosterCursor();
   }
   cursorState = nextState;
@@ -138,7 +140,7 @@ function setCursorState(nextState) {
   if (nextState === CURSOR_STATE.POSTER) {
     activatePosterState();
   }
-  if (nextState === CURSOR_STATE.POSTER || nextState === CURSOR_STATE.LOGO) {
+  if (!wasMorphing && willMorph) {
     enterPosterCursor();
   }
 }
@@ -254,7 +256,8 @@ function getPosterAtPoint(clientX, clientY) {
 
 function updatePointerState(target, clientX, clientY) {
   const logo = target instanceof Element ? target.closest('.brand') : null;
-  if (logo && canUseOutlineCursor()) {
+  const projectsLink = target instanceof Element ? target.closest('.secondary-action') : null;
+  if ((logo || projectsLink) && canUseOutlineCursor()) {
     clearPosterExitTimer();
     setActiveCard(null);
     setCursorState(CURSOR_STATE.LOGO);
@@ -963,6 +966,27 @@ renderProfilePanels();
 if (transitionScene) {
   const fallback = transitionScene.querySelector('.manifesto-fallback');
   const sliceContainer = transitionScene.querySelector('.transition-slices');
+  const brandMotion = document.querySelector('.site-header .brand-motion');
+  const baseLogo = brandMotion?.querySelector('.site-logo');
+  const contrastLogo = baseLogo?.cloneNode(true);
+  const svgNamespace = 'http://www.w3.org/2000/svg';
+  let contrastClip;
+  let contrastRects = [];
+  if (contrastLogo) {
+    contrastLogo.classList.add('site-logo--contrast');
+    contrastLogo.querySelectorAll('clipPath[id]').forEach((clip) => {
+      const originalId = clip.id;
+      clip.id = `homepage-contrast-${originalId}`;
+      contrastLogo.querySelector(`[clip-path="url(#${originalId})"]`)
+        ?.setAttribute('clip-path', `url(#${clip.id})`);
+    });
+    contrastClip = document.createElementNS(svgNamespace, 'clipPath');
+    contrastClip.id = 'homepage-logo-contrast-region';
+    contrastClip.setAttribute('clipPathUnits', 'userSpaceOnUse');
+    contrastLogo.querySelector('defs').append(contrastClip);
+    contrastLogo.setAttribute('clip-path', `url(#${contrastClip.id})`);
+    brandMotion.append(contrastLogo);
+  }
   const stripeWeights = [
     0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55,
     0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.1,
@@ -978,6 +1002,7 @@ if (transitionScene) {
   let targetTransitionProgress = 0;
   let currentTransitionProgress = 0;
   let transitionAnimationFrame = 0;
+  let contrastAnimationFrame = 0;
   let lastTransitionFrameTime = 0;
   let transitionInitialized = false;
 
@@ -988,7 +1013,52 @@ if (transitionScene) {
     slice.style.flexGrow = String(weight);
     sliceContainer.append(slice);
     slices.push(slice);
+    if (contrastClip) {
+      const rect = document.createElementNS(svgNamespace, 'rect');
+      rect.setAttribute('x', '0');
+      rect.setAttribute('width', '488.57');
+      rect.setAttribute('height', '0');
+      contrastClip.append(rect);
+      contrastRects.push(rect);
+    }
   });
+
+  function syncHeaderContrast(active) {
+    if (!active || !contrastLogo) {
+      contrastRects.forEach((rect) => rect.setAttribute('height', '0'));
+      body.classList.remove('nav-on-red');
+      return;
+    }
+
+    const logoBounds = contrastLogo.getBoundingClientRect();
+    const menuBounds = menuButton.getBoundingClientRect();
+    const menuCenterY = menuBounds.top + menuBounds.height / 2;
+    let menuOnRed = false;
+    slices.forEach((slice, index) => {
+      const band = slice.getBoundingClientRect();
+      if (band.height > 0.5 && band.top <= menuCenterY && band.bottom >= menuCenterY) {
+        menuOnRed = true;
+      }
+      const top = Math.max(band.top, logoBounds.top);
+      const bottom = Math.min(band.bottom, logoBounds.bottom);
+      const rect = contrastRects[index];
+      if (bottom <= top || band.height <= 0.5 || logoBounds.height <= 0) {
+        rect.setAttribute('height', '0');
+        return;
+      }
+      rect.setAttribute('y', ((top - logoBounds.top) / logoBounds.height * 145.82).toFixed(3));
+      rect.setAttribute('height', ((bottom - top) / logoBounds.height * 145.82).toFixed(3));
+    });
+    body.classList.toggle('nav-on-red', menuOnRed);
+  }
+
+  function followHeaderContrast() {
+    const active = !reducedMotion.matches && window.innerWidth > 760
+      && window.scrollY >= transitionTop && window.scrollY <= transitionTop + transitionRange
+      && currentTransitionProgress < 0.999;
+    syncHeaderContrast(active);
+    contrastAnimationFrame = active ? requestAnimationFrame(followHeaderContrast) : 0;
+  }
 
   function refreshTransitionLayout() {
     const bounds = fallback.getBoundingClientRect();
@@ -1015,6 +1085,9 @@ if (transitionScene) {
       sliceContainer.style.visibility = 'visible';
       body.classList.remove('nav-on-red', 'nav-in-shutter');
       slices.forEach((slice) => { slice.style.transform = 'none'; });
+      syncHeaderContrast(false);
+      cancelAnimationFrame(contrastAnimationFrame);
+      contrastAnimationFrame = 0;
       return;
     }
 
@@ -1025,7 +1098,6 @@ if (transitionScene) {
     fallback.style.visibility = 'visible';
     sliceContainer.style.visibility = transitionComplete ? 'hidden' : 'visible';
     body.classList.remove('nav-in-shutter');
-    body.classList.toggle('nav-on-red', sceneIsActive && !transitionComplete);
 
     const timelineTime = progress * stripeTimelineDuration;
     slices.forEach((slice, index) => {
@@ -1037,6 +1109,14 @@ if (transitionScene) {
         ? 'none'
         : `scaleY(${(1 - localProgress).toFixed(5)})`;
     });
+    const active = sceneIsActive && !transitionComplete;
+    syncHeaderContrast(active);
+    if (active && !contrastAnimationFrame) {
+      contrastAnimationFrame = requestAnimationFrame(followHeaderContrast);
+    } else if (!active && contrastAnimationFrame) {
+      cancelAnimationFrame(contrastAnimationFrame);
+      contrastAnimationFrame = 0;
+    }
   }
 
   function animateTransition(now) {

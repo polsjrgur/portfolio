@@ -38,6 +38,7 @@
 
 .brand-motion {
   width: 176px;
+  position: relative;
   display: block;
   opacity: 1;
   filter: blur(0);
@@ -76,6 +77,14 @@
   overflow: visible;
   filter: none;
   transition: filter 0.25s ease;
+}
+
+.site-logo--contrast {
+  position: absolute;
+  inset: 0;
+  filter: invert(1);
+  transition: none;
+  pointer-events: none;
 }
 
 .site-logo .logo-tail {
@@ -121,10 +130,11 @@
   will-change: transform, border-radius, background-color, border-width;
 }
 
-body.menu-open .site-logo,
-body.nav-on-red:not(.menu-open) .site-logo {
+body.menu-open .site-logo:not(.site-logo--contrast) {
   filter: invert(1);
 }
+
+body.menu-open .site-logo--contrast { visibility: hidden; }
 
 @media (max-width: 760px) {
   .brand {

@@ -62,9 +62,19 @@
       <div class="projects-heading" data-detail-reveal-group>
         <p class="projects-kicker reveal-text">Portfolio / 2026</p>
         <h1 class="reveal-text">All Projects</h1>
-        <p class="projects-count reveal-text"></p>
       </div>
-      <div class="projects-grid" data-detail-media-group aria-label="All portfolio projects"></div>
+      <div class="projects-toolbar">
+        <div class="projects-filters" role="group" aria-label="Filter projects">
+          <button class="projects-filter" type="button" data-filter="all" aria-pressed="true"><span>All</span></button>
+          <button class="projects-filter" type="button" data-filter="poster" aria-pressed="false"><span>Poster Design</span></button>
+          <button class="projects-filter" type="button" data-filter="brand" aria-pressed="false"><span>Brand Identity</span></button>
+          <button class="projects-filter" type="button" data-filter="packaging" aria-pressed="false"><span>Packaging Design</span></button>
+          <button class="projects-filter" type="button" data-filter="typography-editorial" aria-pressed="false"><span>Typography &amp; Editorial</span></button>
+          <button class="projects-filter" type="button" data-filter="ui-ux" aria-pressed="false"><span>UI/UX Design</span></button>
+        </div>
+        <p class="projects-count" role="status" aria-live="polite"></p>
+      </div>
+      <div class="projects-grid" aria-label="All portfolio projects"></div>
       <footer class="projects-footer">
         <a href="../index.html#selected-work">Back to Home <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 18 12"><path d="M1 6h15M11 1l5 5-5 5" /></svg></a>
       </footer>
@@ -83,7 +93,6 @@
       <div class="dialog-layout">
         <div class="dialog-art"><img src="" alt="" /></div>
         <div class="dialog-copy">
-          <p class="dialog-number"></p>
           <h2></h2>
           <p class="dialog-category"></p>
           <p class="dialog-description"></p>
@@ -96,7 +105,6 @@
     <script src="../cursor-morph.js"></script>
     <script src="../projects-data.js"></script>
     <script src="./script.js"></script>
-    <script src="../soultube/script.js"></script>
     <script src="../detail-reveal.js"></script>
     <script src="../site-logo.js"></script>
     <script src="../site-intro.js"></script>

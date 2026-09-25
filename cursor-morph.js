@@ -1,7 +1,9 @@
 (() => {
   const DOT_SCALE = 10 / 78;
   const BORDER_WIDTH = 2.5;
-  const ENTRY_DURATION = 630;
+  const OUTLINE_SCALE = 1.18;
+  const OUTLINE_RADIUS = 12;
+  const ENTRY_DURATION = 600;
   const EXIT_DURATION = 360;
   const LOOP_HOLD = 270;
   const LOOP_TRANSITION = 660;
@@ -76,11 +78,11 @@
     function getEntryShape(elapsed) {
       const keyframes = [
         { time: 0, scale: DOT_SCALE, borderWidth: 0, fillAlpha: 1, radius: 50, rotation: 0, easing: cursorEaseOut },
-        { time: 150, scale: 1, borderWidth: BORDER_WIDTH, fillAlpha: 0.16, radius: 46, rotation: 30, easing: cursorEaseOut },
-        { time: 345, scale: 1, borderWidth: BORDER_WIDTH, fillAlpha: 0.12, radius: 42, rotation: 42, easing: smoothStep },
-        { time: 450, scale: 1, borderWidth: BORDER_WIDTH, fillAlpha: 0.04, radius: 18, rotation: 68, easing: smoothStep },
-        { time: 540, scale: 1, borderWidth: BORDER_WIDTH, fillAlpha: 0, radius: 6, rotation: 82, easing: cursorEaseOut },
-        { time: ENTRY_DURATION, scale: 1, borderWidth: BORDER_WIDTH, fillAlpha: 0, radius: 0, rotation: 90, easing: cursorEaseOut }
+        { time: 110, scale: 1.05, borderWidth: 0, fillAlpha: 0.28, radius: 50, rotation: 18, easing: cursorEaseOut },
+        { time: 230, scale: OUTLINE_SCALE, borderWidth: BORDER_WIDTH, fillAlpha: 0.2, radius: 48, rotation: 32, easing: smoothStep },
+        { time: 370, scale: OUTLINE_SCALE, borderWidth: BORDER_WIDTH, fillAlpha: 0.1, radius: 32, rotation: 54, easing: smoothStep },
+        { time: 490, scale: OUTLINE_SCALE, borderWidth: BORDER_WIDTH, fillAlpha: 0.02, radius: 18, rotation: 78, easing: smoothStep },
+        { time: ENTRY_DURATION, scale: OUTLINE_SCALE, borderWidth: BORDER_WIDTH, fillAlpha: 0, radius: OUTLINE_RADIUS, rotation: 90, easing: cursorEaseOut }
       ];
 
       const bounded = Math.max(0, Math.min(ENTRY_DURATION, elapsed));
@@ -102,12 +104,12 @@
       const circleTransitionEnd = squareHoldEnd + LOOP_TRANSITION;
       const circleHoldEnd = circleTransitionEnd + LOOP_HOLD;
 
-      if (phase <= squareHoldEnd) return 0;
+      if (phase <= squareHoldEnd) return OUTLINE_RADIUS;
       if (phase < circleTransitionEnd) {
-        return 50 * cursorEaseOut((phase - squareHoldEnd) / LOOP_TRANSITION);
+        return OUTLINE_RADIUS + (50 - OUTLINE_RADIUS) * cursorEaseOut((phase - squareHoldEnd) / LOOP_TRANSITION);
       }
       if (phase <= circleHoldEnd) return 50;
-      return 50 * (1 - cursorEaseOut((phase - circleHoldEnd) / LOOP_TRANSITION));
+      return 50 - (50 - OUTLINE_RADIUS) * cursorEaseOut((phase - circleHoldEnd) / LOOP_TRANSITION);
     }
 
     function getLoopRotation(phase) {
@@ -193,10 +195,10 @@
         transitionElapsed = Math.min(transitionDuration, transitionElapsed + deltaTime);
         const progress = cursorEaseOut(transitionElapsed / transitionDuration);
         shape = interpolateShape(transitionStart, {
-          scale: 1,
+          scale: OUTLINE_SCALE,
           borderWidth: BORDER_WIDTH,
           fillAlpha: 0,
-          radius: 0,
+          radius: OUTLINE_RADIUS,
           rotation: transitionEndRotation
         }, progress);
 
@@ -211,7 +213,7 @@
         loopCycle += Math.floor(loopTime / LOOP_DURATION);
         loopPhase = loopTime % LOOP_DURATION;
         shape = {
-          scale: 1,
+          scale: OUTLINE_SCALE,
           borderWidth: BORDER_WIDTH,
           fillAlpha: 0,
           radius: getLoopRadius(loopPhase),
@@ -219,14 +221,22 @@
         };
       } else if (mode === 'exit') {
         transitionElapsed = Math.min(transitionDuration, transitionElapsed + deltaTime);
-        const progress = cursorEaseOut(transitionElapsed / transitionDuration);
-        shape = interpolateShape(transitionStart, {
-          scale: DOT_SCALE,
+        const smallCircle = {
+          scale: 0.34,
           borderWidth: 0,
-          fillAlpha: 1,
+          fillAlpha: 0.16,
           radius: 50,
           rotation: transitionEndRotation
-        }, progress);
+        };
+        shape = transitionElapsed <= 210
+          ? interpolateShape(transitionStart, smallCircle, cursorEaseOut(transitionElapsed / 210))
+          : interpolateShape(smallCircle, {
+            scale: DOT_SCALE,
+            borderWidth: 0,
+            fillAlpha: 1,
+            radius: 50,
+            rotation: transitionEndRotation
+          }, smoothStep((transitionElapsed - 210) / (transitionDuration - 210)));
 
         if (transitionElapsed >= transitionDuration) {
           mode = 'idle';

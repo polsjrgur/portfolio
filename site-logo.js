@@ -18,6 +18,7 @@
 
     const brand = logo.closest('.brand');
     const brandMotion = logo.closest('.brand-motion');
+    const logos = [logo, ...brandMotion.querySelectorAll('.site-logo--contrast')];
     let targetProgress = clamp(window.scrollY / animationEnd);
     let currentProgress = targetProgress;
     let animationFrame = 0;
@@ -56,11 +57,13 @@
       const lineScale = 1 - (1 - finalLineScale) * compactProgress;
       const pShift = finalPShift * compactProgress;
 
-      logo.style.setProperty('--logo-tail-shift', `${(-56 * tailProgress).toFixed(3)}px`);
-      logo.style.setProperty('--logo-tail-opacity', (1 - tailProgress).toFixed(4));
-      logo.style.setProperty('--logo-tail-blur', `${(2 * tailProgress).toFixed(3)}px`);
-      logo.style.setProperty('--logo-line-scale', lineScale.toFixed(5));
-      logo.style.setProperty('--logo-p-shift', `${pShift.toFixed(3)}px`);
+      logos.forEach((layer) => {
+        layer.style.setProperty('--logo-tail-shift', `${(-56 * tailProgress).toFixed(3)}px`);
+        layer.style.setProperty('--logo-tail-opacity', (1 - tailProgress).toFixed(4));
+        layer.style.setProperty('--logo-tail-blur', `${(2 * tailProgress).toFixed(3)}px`);
+        layer.style.setProperty('--logo-line-scale', lineScale.toFixed(5));
+        layer.style.setProperty('--logo-p-shift', `${pShift.toFixed(3)}px`);
+      });
     }
 
     function getTargetProgress() {
